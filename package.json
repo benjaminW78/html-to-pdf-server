@@ -1,0 +1,44 @@
+{
+  "name": "pdf-micro-service",
+  "version": "1.0.0",
+  "description": "serve existing html files and translates them to pdf by a nodejs application",
+  "main": "app/app.js",
+  "scripts": {
+    "startDev": "nodemon app/app.js",
+    "test": "jest"
+  },
+  "config": {
+    "development": {
+      "http": {
+        "domain": "127.1.1.1",
+        "protocol": "http",
+        "port": "8080"
+      }
+    }
+  },
+  "keywords": [
+    "npm",
+    "html",
+    "pdf",
+    "translator"
+  ],
+  "author": "benjaminw78",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "jest-cli": "^0.10.0",
+    "nodemon": "^1.9.1"
+  },
+  "dependencies": {
+    "handlebars": "^4.0.5",
+    "koa": "^1.2.0",
+    "koa-bodyparser": "^2.0.1",
+    "koa-cors": "0.0.16",
+    "koa-joi-router": "^3.0.0",
+    "koa-postgresql-pool-connector": "^1.0.3",
+    "nconf": "^0.8.4",
+    "node-noop": "^1.0.0",
+    "throng": "^3.0.0",
+    "wkhtmltopdf": "^0.1.6"
+  }
+}
