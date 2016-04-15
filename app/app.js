@@ -14,7 +14,7 @@ function start() {
     const config = require('./config').current,
         debug = require('./utils/debug')(config),
         cors = require('koa-cors'),
-        extendResponseBody = require('./utils/extendResponseBody'),
+        //extendResponseBody = require('./utils/extendResponseBody'),
         apacheLog = require('./utils/apacheLog')(config),
         bodyParser = require('koa-bodyparser'),
         koa = require('koa'),
@@ -22,11 +22,9 @@ function start() {
         publicRouterV1 = require('./routes/mainRouter').publicRouterV1(config),
         app = koa();
 
-    app.use(apacheLog);
+    //app.use(apacheLog);
     app.use(bodyParser());
-    app.keys = ['webikeopasla'];
-
-    app.use(debug);
+    //app.use(debug);
 
     app.use(cors({
         origin: '*',
@@ -35,7 +33,6 @@ function start() {
 
 
 
-    app.use(extendResponseBody);
 
     app.use(publicRouterV1.middleware());
     //app.use(privateRouterV1.middleware());

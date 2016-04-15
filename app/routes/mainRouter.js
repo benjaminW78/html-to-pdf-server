@@ -14,8 +14,8 @@ function publicRouterV1(config) {
 
     pubRouter
         .prefix('/public/v1')
-        .get('/pdf/:pdfId', pubRoutesV1.pdf.get)
-        .get('/pdf', pubRoutesV1.pdf.get);
+
+        .get('/pdf', pubRoutesV1.pdf.newPdf);
         //.post('/auth', pubRoutesV1.auth.do);
 
     return pubRouter;
