@@ -16,26 +16,19 @@ function start() {
         cors = require('koa-cors'),
         //extendResponseBody = require('./utils/extendResponseBody'),
         apacheLog = require('./utils/apacheLog')(config),
-        bodyParser = require('koa-bodyparser'),
-        koa = require('koa'),
+        bodyParser = require('body-parser'),
+        koa = require('express'),
         //privateRouterV1 = require('./routes/mainRouter').privateRouterV1(config),
         publicRouterV1 = require('./routes/mainRouter').publicRouterV1(config),
         app = koa();
 
     //app.use(apacheLog);
-    app.use(bodyParser());
-    //app.use(debug);
+    app.use( bodyParser.json() );       // to support JSON-encoded bodies
+    app.use( bodyParser.urlencoded( {     // to support URL-encoded bodies
+        extended: true
+    } ) );
 
-    app.use(cors({
-        origin: '*',
-        allowMethods: 'GET,PUT,POST,DELETE'
-    }));
-
-
-
-
-    app.use(publicRouterV1.middleware());
-    //app.use(privateRouterV1.middleware());
+    app.use(publicRouterV1);
 
     app.listen(config.http.port);
 

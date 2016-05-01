@@ -1,7 +1,7 @@
 /*globals module, require */
 'use strict';
 
-const router = require('koa-joi-router');
+const router = require('express');
 
 /**
  * Declare all public roads inside this function
@@ -10,12 +10,10 @@ const router = require('koa-joi-router');
  */
 function publicRouterV1(config) {
     const pubRoutesV1 = require('./public/')(config).v1,
-        pubRouter = router();
+        pubRouter = router.Router();
 
     pubRouter
-        .prefix('/public/v1')
-
-        .get('/pdf', pubRoutesV1.pdf.newPdf);
+        .get('/public/v1/pdf', pubRoutesV1.pdf.newPdf);
         //.post('/auth', pubRoutesV1.auth.do);
 
     return pubRouter;
