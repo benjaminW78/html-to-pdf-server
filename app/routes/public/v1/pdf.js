@@ -30,26 +30,29 @@ function pdfCtrl ( config ) {
     }
 
     function generateNewPdf ( req, res ) {
-        let template = path.join( appDir + "/html/contractTest1/", name ),
-        templateHtml = fs.readFileSync( template, 'utf8' ),
+        if ( req.body.name === undefined ) {
+            res.status( 403 ).send( 'missing pdf name' );
+        }
 
-        options = {
-            width : '280mm',
-            height: '400mm'
-        };
+        let template = path.join( appDir + "/html/contractTest1/", req.body.name ),
+            templateHtml = fs.readFileSync( template, 'utf8' ),
+            options = {
+                width : '280mm',
+                height: '400mm'
+            };
 
         htmlToPdf
             .create( templateHtml, options )
             .toStream( function ( err, stream ) {
-                console.log( arguments );
+                let test = req.params.pdfName;
+
                 if ( err ) {
                     res.send( err );
                 }
-                let test = "WhateverFilenameYouWant.pdf";
                 test = encodeURIComponent( test );
                 res.set( 'Content-disposition', 'inline; filename="' + test + '"' );
                 res.set( 'Content-type', 'application/pdf' );
-                data2.pipe( res );
+                stream.pipe( res );
             } );
     }
 

@@ -13,7 +13,7 @@ function publicRouterV1(config) {
         pubRouter = router.Router();
 
     pubRouter
-        .get('/public/v1/pdf', pubRoutesV1.pdf.newPdf);
+        .post('/public/v1/pdf', pubRoutesV1.pdf.newPdf);
         //.post('/auth', pubRoutesV1.auth.do);
 
     return pubRouter;

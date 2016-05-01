@@ -13,8 +13,6 @@ throng(start, {
 function start() {
     const config = require('./config').current,
         debug = require('./utils/debug')(config),
-        cors = require('koa-cors'),
-        //extendResponseBody = require('./utils/extendResponseBody'),
         apacheLog = require('./utils/apacheLog')(config),
         bodyParser = require('body-parser'),
         koa = require('express'),
