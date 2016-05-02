@@ -7,7 +7,56 @@
     "startDev": "nodemon app/app.js",
     "test": "jest"
   },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "globals": {
+      "__app": "../app/"
+    },
+    "testDirectoryName": "tests",
+    "testFileExtensions": [
+      "js",
+      "json"
+    ]
+  },
   "config": {
+    "testEmpty": {
+      "http": {}
+    },
+    "testDbURL": {
+      "http": {},
+      "dbData": {
+        "databaseUrl": "totoro"
+      },
+      "dbAuth": {
+        "databaseUrl": "taratata"
+      }
+    },
+    "test": {
+      "jwt": {
+        "algorithms": "HS256",
+        "issuer": "companeo-fr.lan/api"
+      },
+      "http": {
+        "domain": "",
+        "protocol": "",
+        "port": ""
+      },
+      "dbData": {
+        "db_host": "smartdata.openstack.lan",
+        "db_port": "5432",
+        "db_name": "test",
+        "db_superuser": "test",
+        "db_superpassword": "test"
+      },
+      "dbAuth": {
+        "db_host": "pg92-ppd.companeo.local",
+        "db_port": "5432",
+        "db_name": "companeo_v6",
+        "db_superuser": "companeo",
+        "db_superpassword": "qdfkdskf"
+      }
+    },
     "development": {
       "http": {
         "domain": "127.1.1.1",
