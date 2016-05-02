@@ -35,7 +35,6 @@ function doConfig() {
         .file({
             file: './package.json'
         });
-
     if (undefined !== process.env.NODE_ENV) {
         config = nconf.get('config:' + process.env.NODE_ENV);
         config.http.port = process.env.PORT || config.http.port;
@@ -47,8 +46,8 @@ function doConfig() {
         config.activeDebug = true;
         config.activeDebugSql = true;
     }
-    //config.dbData = constructDbUrl(config.dbData);
-    //config.dbAuth = constructDbUrl(config.dbAuth);
+    config.dbData = constructDbUrl(config.dbData);
+    config.dbAuth = constructDbUrl(config.dbAuth);
     config.appVersion = nconf.get('version');
 
     return config;
