@@ -37,13 +37,9 @@ function pdfCtrl(config) {
         let template = path.join(appDir + "/html/contractTest1/", req.body.name),
             templateHtml = fs.readFileSync(template, 'utf8'),
             options = {
-                header: {
-                    "height": "45mm",
-                    "contents": '<img alt="" src="file:///home/ben/Dev/html-to-pdf-server/app/html/contractTest1/images/image00.jpg" style="width: 670px; height: 107.00px; margin-left: -0.00px; margin-top: -0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">'
-                },
-                footer: {
+                "footer": {
                     "height": "28mm",
-                    "contents": '<span style="color: #444;">{{page}}</span>/<span>{{pages}}</span>'
+                    "contents": '<span style="color: darkred;">{{page}}</span>/<span>{{pages}}</span>'
                 },
                 border: "0",
                 format: "A4"
