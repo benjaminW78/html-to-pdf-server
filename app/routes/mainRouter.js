@@ -13,7 +13,9 @@ function privateRouterV1(config) {
         privRouter = router.Router();
 
     privRouter
+        // do simple post with json name key with test.html value
         .post('/private/v1/pdf', privRoutesV1.pdf.newPdf)
+        // do multipart form with a file stream under any name you want
         .post('/private/v1/stringToPdf', privRoutesV1.pdf.newPdfFromString);
         //.post('/auth', pubRoutesV1.auth.do);
 
