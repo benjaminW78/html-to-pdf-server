@@ -15,7 +15,7 @@ function recursiveRequire(path, routes, settings) {
             if (filename.endsWith('.js')) {
                 if ('index.js' !== filename) {
                     filename = filename.substring(0, filename.length - 3);
-                    routes[filename] = require(path.replace(/\/app\/routes\/public/gi, '') + '/' + filename)(settings);
+                    routes[filename] = require(path.replace(/\/app\/routes\/private/gi, '') + '/' + filename)(settings);
                 }
             } else {
                 routes[filename] = {};
@@ -27,7 +27,7 @@ function recursiveRequire(path, routes, settings) {
 function index(config) {
     const routes = {};
 
-    recursiveRequire('./app/routes/public', routes, config);
+    recursiveRequire('./app/routes/private', routes, config);
 
     return routes;
 }

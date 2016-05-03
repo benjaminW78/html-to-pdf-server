@@ -17,7 +17,8 @@ function start() {
         bodyParser = require('body-parser'),
         koa = require('express'),
         //privateRouterV1 = require('./routes/mainRouter').privateRouterV1(config),
-        publicRouterV1 = require('./routes/mainRouter').publicRouterV1(config),
+        //publicRouterV1 = require('./routes/mainRouter').publicRouterV1(config),
+        privateRouterV1 = require('./routes/mainRouter').privateRouterV1(config),
         app = koa();
 
     //app.use(apacheLog);
@@ -26,7 +27,8 @@ function start() {
         extended: true
     } ) );
 
-    app.use(publicRouterV1);
+    //app.use(publicRouterV1);
+    app.use(privateRouterV1);
 
     app.listen(config.http.port);
 

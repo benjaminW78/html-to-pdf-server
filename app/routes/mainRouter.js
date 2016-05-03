@@ -4,19 +4,20 @@
 const router = require('express');
 
 /**
- * Declare all public roads inside this function
+ * Declare all private roads inside this function
  * @param config file from app.js file
  * @returns {} router object containing every public roads
  */
-function publicRouterV1(config) {
-    const pubRoutesV1 = require('./public/')(config).v1,
-        pubRouter = router.Router();
+function privateRouterV1(config) {
+    const privRoutesV1 = require('./private/')(config).v1,
+        privRouter = router.Router();
 
-    pubRouter
-        .post('/public/v1/pdf', pubRoutesV1.pdf.newPdf);
+    privRouter
+        .post('/private/v1/pdf', privRoutesV1.pdf.newPdf)
+        .post('/private/v1/stringToPdf', privRoutesV1.pdf.newPdfFromString);
         //.post('/auth', pubRoutesV1.auth.do);
 
-    return pubRouter;
+    return privRouter;
 }
 //
 //function privateRouterV1(config) {
@@ -37,5 +38,5 @@ function publicRouterV1(config) {
 //    return privRouter;
 //}
 
-module.exports.publicRouterV1 = publicRouterV1;
-//module.exports.privateRouterV1 = privateRouterV1;
+//module.exports.publicRouterV1 = publicRouterV1;
+module.exports.privateRouterV1 = privateRouterV1;
